@@ -24,13 +24,13 @@ $RECYCLE.BIN/
 *.rsp.meta
 *.suo
 *.user
-Unity/*/*.booproj
-Unity/*/*.csproj
-Unity/*/*.pidb
-Unity/*/*.sln
-Unity/*/*.unityproj
-Unity/*/*.vscode
-Unity/*/*.userprefs
+Unity/*.booproj
+Unity/*.csproj
+Unity/*.pidb
+Unity/*.sln
+Unity/*.unityproj
+Unity/*.vscode
+Unity/*.userprefs
 
 ##CRI
 #*.atmcuser
