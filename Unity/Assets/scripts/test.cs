@@ -21,14 +21,13 @@ public class test : MonoBehaviour {
 
         //Debug.Log("awake");
 
-        //SceneManager.LoadScene("test", LoadSceneMode.Single);
-        //SceneManager.LoadScene("background", LoadSceneMode.Additive);
-        //SceneManager.LoadScene("gimmick", LoadSceneMode.Additive);
-        //SceneManager.LoadScene("ui", LoadSceneMode.Additive);
-
     }
 
     void Start () {
+        SceneManager.LoadScene("background", LoadSceneMode.Additive);
+        SceneManager.LoadScene("gimmick", LoadSceneMode.Additive);
+        SceneManager.LoadScene("ui", LoadSceneMode.Additive);
+
     }
 
     void Update () {
