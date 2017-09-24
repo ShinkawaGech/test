@@ -34,15 +34,15 @@ public class MasterDataLoader {
         //foreach (KeyValuePair<string, bool> pair in flg) {
         //Debug.Log(pair.Key + " : " + pair.Value);
         //}
-        Debug.Log("m01_kit_a : " + flg["m01_kit_a"]);
-        Debug.Log("m01_kit_b : " + flg["m01_kit_b"]);
-        Debug.Log("m01_kit_c : " + flg["m01_kit_c"]);
+        //Debug.Log("m01_kit_a : " + flg["m01_kit_a"]);
+        //Debug.Log("m01_kit_b : " + flg["m01_kit_b"]);
+        //Debug.Log("m01_kit_c : " + flg["m01_kit_c"]);
 
         //デバッグ：書き込み
         flg["m01_kit_b"] = true;
-        Debug.Log("m01_kit_a : " + flg["m01_kit_a"]);
-        Debug.Log("m01_kit_b : " + flg["m01_kit_b"] + " <-Trueになる");
-        Debug.Log("m01_kit_c : " + flg["m01_kit_c"]);
+        //Debug.Log("m01_kit_a : " + flg["m01_kit_a"]);
+        //Debug.Log("m01_kit_b : " + flg["m01_kit_b"] + " <-Trueになる");
+        //Debug.Log("m01_kit_c : " + flg["m01_kit_c"]);
 
     }
 

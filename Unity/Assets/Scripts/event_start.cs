@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class event_start : MonoBehaviour {
 
-	// Use this for initialization
+    public string eventName;
+
 	void Start () {
-		
 	}
 
 
@@ -16,7 +16,22 @@ public class event_start : MonoBehaviour {
 
     public void eventStart()
     {
-        Debug.Log("click");
+
+        //Debug.Log("click");
+
+        if (eventName == "chest")
+        {
+            Debug.Log("event : " + eventName);
+            chest che = GetComponent<chest>();
+            che.ChestRotate();
+        }
+        else if (eventName == "test")
+        {
+            Debug.Log("event : " + eventName);
+        }
+        else {
+            Debug.Log("etc...");
+        }
     }
 
 
