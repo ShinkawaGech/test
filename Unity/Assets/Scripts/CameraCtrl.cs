@@ -21,14 +21,14 @@ public class CameraCtrl : MonoBehaviour {
         //}
 
         Dictionary<string, Vector3> camPos = new Dictionary<string, Vector3>();
-        camPos.Add("liv_front", pos = new Vector3(0.0f, 3.0f, -3.0f));
-        camPos.Add("liv_front_chest", pos = new Vector3(0.0f, 4.0f, -6.0f));
+        camPos.Add("liv_front", pos = new Vector3(-5.0f, 3.5f, -3.0f));
+        camPos.Add("liv_front_chest", pos = new Vector3(0.0f, 3.0f, -3.0f));
 
         Dictionary<string, Vector3> camRot = new Dictionary<string, Vector3>();
-        camRot.Add("liv_front", rot = new Vector3(20.0f, 0.0f, 0.0f));
-        camRot.Add("liv_front_chest", rot = new Vector3(25.0f, 0.0f, 0.0f));
+        camRot.Add("liv_front", rot = new Vector3(20.0f, 50.0f, 0.0f));
+        camRot.Add("liv_front_chest", rot = new Vector3(20.0f, 0.0f, 0.0f));
         //Debug.Log(camRot["liv_front"]);
-        //ebug.Log(camRot["liv_front_chest"]);
+        //Debug.Log(camRot["liv_front_chest"]);
 
         //カメラ移動値反映
         CameraMove(pos,rot);
@@ -44,7 +44,13 @@ public class CameraCtrl : MonoBehaviour {
         posSet.y = posM.y;
         posSet.z = posM.z;
         transform.position = posSet;
-        Debug.Log("posSet : " + posSet.x + " : " + posSet.y + " : " + posSet.z);
+
+        float rotSetX = rotM.x;
+        float rotSetY = rotM.y;
+        float rotSetZ = rotM.z;
+        transform.rotation = Quaternion.Euler(rotSetX, rotSetY, rotSetZ);
+
+        //Debug.Log("posSet : " + posSet.x + " : " + posSet.y + " : " + posSet.z);
 
     }
 
