@@ -7,8 +7,8 @@ public class MasterDataLoader {
 
     public List<string[]> csvDatas = new List<string[]>();
 
-    public void CsvRead(string file) {
-        TextAsset csvFile = Resources.Load("csv/" + file) as TextAsset;
+    public void CsvRead(string fileName) {
+        TextAsset csvFile = Resources.Load("csv/" + fileName) as TextAsset;
         StringReader reader = new StringReader(csvFile.text);
 
         while(reader.Peek() > -1){
@@ -21,13 +21,19 @@ public class MasterDataLoader {
         int col = csvDatas[0].Length;
         //Debug.Log("Lst :" + row + ":" + col);
 
+
+
         //csvデータのディクショナリ可
-        Dictionary<string, bool> flg = new Dictionary<string, bool>();
+
+        //ConvertDictionary();
+
+        //string dicName = fileName + "Dic"; 
+        Dictionary<string, bool> dic = new Dictionary<string, bool>();
 
         for (int i = 0; i < row; i++) {
             string key = csvDatas[i][0];
             bool value = bool.Parse(csvDatas[i][1]);
-            flg.Add(key, value);
+            dic.Add(key, value);
         }
 
         //デバッグ：参照
@@ -39,12 +45,20 @@ public class MasterDataLoader {
         //Debug.Log("m01_kit_c : " + flg["m01_kit_c"]);
 
         //デバッグ：書き込み
-        flg["m01_kit_b"] = true;
+        dic["m01_kit_b"] = true;
         //Debug.Log("m01_kit_a : " + flg["m01_kit_a"]);
         //Debug.Log("m01_kit_b : " + flg["m01_kit_b"] + " <-Trueになる");
         //Debug.Log("m01_kit_c : " + flg["m01_kit_c"]);
 
+        //リスト初期化
+        //Debug.Log("クリア前" + csvDatas[0][0]);
+        csvDatas.Clear();
+        //Debug.Log("クリア後" + csvDatas[0][0]);
+        //Debug.Log("Dic名" + dicName);
     }
 
+    void ConvertDictionary() {
+        Debug.Log("コンバート！");
+    }
 
 }
