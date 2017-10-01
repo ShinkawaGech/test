@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class chest : MonoBehaviour {
+public class GimChest : MonoBehaviour {
 
     float sRot = 0.0f;
     float eRot = 90.0f;
@@ -14,7 +15,7 @@ public class chest : MonoBehaviour {
     private GameObject chestUp;
 
     void Start () {
-        chestUp = transform.Find("Treasure_Chest_Up").gameObject;
+        chestUp = transform.Find("Gim_Chest_Up").gameObject;
         Debug.Log(chestUp.name);
     }
 
@@ -24,11 +25,14 @@ public class chest : MonoBehaviour {
     public void ChestRotate()
     {
         StartCoroutine("coRotate");
+        Debug.Log("1");
     }
 
     IEnumerator coRotate() {
         if (chestOpen == false)
         {
+            Debug.Log("2");
+
             for (rot = sRot; rot <= eRot; rot += cRot)
             {
                 cRot = ((eRot - sRot) / rotTime) * Time.deltaTime;
@@ -38,6 +42,8 @@ public class chest : MonoBehaviour {
             chestOpen = true;
         }
         else {
+            Debug.Log("2");
+
             chestOpen = false;
             rot = 0.0f;
             chestUp.transform.rotation = Quaternion.Euler(rot, 0.0f, 0.0f);

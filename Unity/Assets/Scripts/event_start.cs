@@ -19,11 +19,13 @@ public class event_start : MonoBehaviour {
 
         //Debug.Log("click");
 
-        if (eventName == "chest")
+        if (eventName == "Gim_Chest")
         {
             Debug.Log("event : " + eventName);
-            chest che = GetComponent<chest>();
-            che.ChestRotate();
+            //chestが取得できていない
+            GimChest chest = GameObject.Find("Gim_Chest").GetComponent<GimChest>();
+            chest.ChestRotate();
+            //Debug.Log("GimChest : "+chest.name);
         }
         else if (eventName == "test")
         {
@@ -32,6 +34,7 @@ public class event_start : MonoBehaviour {
         else {
             Debug.Log("etc...");
         }
+
     }
 
 
