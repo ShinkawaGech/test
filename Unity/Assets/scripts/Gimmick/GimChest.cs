@@ -16,7 +16,7 @@ public class GimChest : MonoBehaviour {
 
     void Start () {
         chestUp = transform.Find("Gim_Chest_Up").gameObject;
-        Debug.Log(chestUp.name);
+        //Debug.Log(chestUp.name);
     }
 
     void Update () {
@@ -25,14 +25,11 @@ public class GimChest : MonoBehaviour {
     public void ChestRotate()
     {
         StartCoroutine("coRotate");
-        Debug.Log("1");
     }
 
     IEnumerator coRotate() {
         if (chestOpen == false)
         {
-            Debug.Log("2");
-
             for (rot = sRot; rot <= eRot; rot += cRot)
             {
                 cRot = ((eRot - sRot) / rotTime) * Time.deltaTime;
@@ -42,8 +39,6 @@ public class GimChest : MonoBehaviour {
             chestOpen = true;
         }
         else {
-            Debug.Log("2");
-
             chestOpen = false;
             rot = 0.0f;
             chestUp.transform.rotation = Quaternion.Euler(rot, 0.0f, 0.0f);

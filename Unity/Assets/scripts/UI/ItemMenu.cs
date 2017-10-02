@@ -54,11 +54,11 @@ public class ItemMenu : MonoBehaviour {
             if (ItemInventory[i] != "none") {
                 //ボタン有効化
                 iBtn[i].interactable = true;
-                Debug.Log(ItemInventory[i] + " ok!");
+                //Debug.Log(ItemInventory[i] + " ok!");
             } else {
                 //ボタン無効化
                 iBtn[i].interactable = false;
-                Debug.Log(ItemInventory[i] + " no");
+                //Debug.Log("Item_" + ItemInventory[i]);
             }
         }
 
