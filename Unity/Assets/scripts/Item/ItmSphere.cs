@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class ItmSphere : MonoBehaviour {
 
-    private GameObject sphere;
+    //private GameObject sphere;
 
     void Start () {
-        sphere = transform.Find("Sphere").gameObject;
+        //sphere = transform.Find("Sphere").gameObject;
 
     }
 
@@ -16,8 +16,8 @@ public class ItmSphere : MonoBehaviour {
 		
 	}
 
-    public void GetSpere() {
-        Debug.Log("getだぜ！");
-    }
+    //public void GetSpere() {
+    //    Debug.Log("getだぜ！");
+    //}
 
 }

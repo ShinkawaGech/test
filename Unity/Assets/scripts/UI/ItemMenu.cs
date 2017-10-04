@@ -19,7 +19,7 @@ public class ItemMenu : MonoBehaviour {
 
         //インベントリ初期化
         //Wpn = GameObject.Find("weapon").GetComponent<Button>();
-   
+
         for (int i = 0; i < maxItmCnt; i++) {
             //ボタン情報取得
             string objName = "Item_" + i.ToString();
@@ -34,22 +34,20 @@ public class ItemMenu : MonoBehaviour {
 
         }
 
+        //空アイテム追加テスト
         ItemInventory[1] = "item_1";
         ItemInventory[3] = "item_3";
         ItemInventory[4] = "item_4";
-        //Debug.Log("アイテム[1] : " + ItemInventory[1]);
-        //Debug.Log("アイテム[3] : " + ItemInventory[3]);
-        //Debug.Log("アイテム[5] : " + ItemInventory[5]);
 
     }
 
 
 
-    void Start () {
-	}
+    void Start() {
+    }
 
     //インベントリ更新
-    void Update () {
+    void Update() {
         for (int i = 0; i < maxItmCnt; i++) {
             if (ItemInventory[i] != "none") {
                 //ボタン有効化
@@ -63,4 +61,33 @@ public class ItemMenu : MonoBehaviour {
         }
 
     }
+
+    public void AddInventory(string iName) {
+        //Debug.Log(iName + " をAddだぜ！");
+
+        bool flg = false;
+
+        //アイテムDBからフラグを引っ張ってくる
+
+        //空いてるスロットを探す
+        for (int i = 0; i < maxItmCnt; i++) {
+            if (ItemInventory[i] == "none" && flg == false)
+            {
+                ItemInventory[i] = iName;
+                iBtn[i].interactable = true;
+                flg = true;
+                Debug.Log("スロット[" + i + "]に " + ItemInventory[i] + " をAddだぜ！");
+
+                //アイテムアイコンを表示する
+            }
+
+        }
+
+        if (flg == false) {
+            Debug.Log("アイテムいっぱい");
+            //アイテムいっぱいの時はオブジェクト消しちゃダメ
+        }
+
+    }
+
 }

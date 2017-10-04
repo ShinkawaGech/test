@@ -17,6 +17,7 @@ public class test : MonoBehaviour {
 
     void Start () {
         //Awakeだと上手く動かないらしい
+        //if debug入れようか
         SceneManager.LoadScene("background", LoadSceneMode.Additive);
         SceneManager.LoadScene("gimmick", LoadSceneMode.Additive);
         SceneManager.LoadScene("ui", LoadSceneMode.Additive);
