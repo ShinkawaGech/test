@@ -7,7 +7,7 @@ public class test : MonoBehaviour {
 
     public MasterDataLoader MstData = new MasterDataLoader();
 
-
+    public bool isDebug;
 
     void Awake() {
         //マスターデータ読み込み
@@ -17,10 +17,11 @@ public class test : MonoBehaviour {
 
     void Start () {
         //Awakeだと上手く動かないらしい
-        //if debug入れようか
-        SceneManager.LoadScene("background", LoadSceneMode.Additive);
-        SceneManager.LoadScene("gimmick", LoadSceneMode.Additive);
-        SceneManager.LoadScene("ui", LoadSceneMode.Additive);
+        if (!isDebug) {
+            SceneManager.LoadScene("background", LoadSceneMode.Additive);
+            SceneManager.LoadScene("gimmick", LoadSceneMode.Additive);
+            SceneManager.LoadScene("ui", LoadSceneMode.Additive);
+        }
 
     }
 
