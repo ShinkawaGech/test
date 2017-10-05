@@ -10,7 +10,7 @@ public class ItemButton : MonoBehaviour {
 
     void Start () {
         //ボタンオブジェクト取得
-        string btnName = "Item_" + itemNo;
+        //string btnName = "Item_" + itemNo;
         //btn = GameObject.Find(btnName).GetComponent<ItemButton>();
         //Debug.Log(btn);
     }
