@@ -7,7 +7,7 @@ public class test : MonoBehaviour {
 
     //public MasterDataLoader MstData = new MasterDataLoader();
 
-    public bool isDebug = false;
+    public bool isDebug;
 
     void Awake() {
         //マスターデータ読み込み

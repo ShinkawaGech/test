@@ -6,8 +6,8 @@ using System.IO;
 public class MasterDataLoader {
 
 	//データ一時保管用リスト（あとで下に持ってく
-	List<string>	strDatas = new List<string>();		//Dic用一時リスト(string)
-	List<Transform>	trfDatas = new List<Transform>();	//Dic用一時リスト(Transform)
+	List<string>	strDatas = new List<string>();			//Dic用一時リスト(string)
+	List<Transform>	trfDatas = new List<Transform>();		//Dic用一時リスト(Transform)
 
 
 	//private List<GameObject>	myList		= new List<GameObject>();
