@@ -41,6 +41,13 @@ public class MasterDataLoader : MonoBehaviour {
         TextAsset csvFile = Resources.Load("csv/" + fileName) as TextAsset;
         StringReader reader = new StringReader(csvFile.text);
 
+        //コメント行なら無視する
+        //string strCheck = "#コメント行";
+        //if (strCheck.StartsWith("#")) {
+        //    Debug.Log(strCheck +" は、コメント行！");
+        //}
+
+
 		//データのリスト化
         while(reader.Peek() > -1){
             string line = reader.ReadLine();
@@ -63,7 +70,8 @@ public class MasterDataLoader : MonoBehaviour {
 
 
 		switch(fileName){
-			case "FlagList":
+            //A: string,bool
+ 			case "FlagList":
                 Dictionary<string, bool> FlagDic = new Dictionary<string, bool>();
                 for (int i = 0; i < row; i++)
                 {
@@ -78,7 +86,8 @@ public class MasterDataLoader : MonoBehaviour {
                 Debug.Log(fileName + " : " + row + "件、読込完了！");
                 break;
 
-			case "EventList":
+            //A: string,bool
+            case "EventList":
 		        Dictionary<string, bool> EventDic = new Dictionary<string, bool>();
         		for (int i = 0; i < row; i++)
                 {
@@ -93,7 +102,8 @@ public class MasterDataLoader : MonoBehaviour {
                 Debug.Log(fileName + " : " + row + "件、読込完了！");
                 break;
 
-			case "GimmickList":
+            //B: string,string
+            case "GimmickList":
                 Dictionary<string, string> GimmickDic = new Dictionary<string, string>();
                 for (int i = 0; i < row; i++)
                 {
@@ -108,7 +118,8 @@ public class MasterDataLoader : MonoBehaviour {
                 Debug.Log(fileName + " : " + row + "件、読込完了！");
                 break;
 
-			case "ItemList":
+            //B: string,string
+            case "ItemList":
                 Dictionary<string, string> ItemDic = new Dictionary<string, string>();
                 for (int i = 0; i < row; i++)
                 {
@@ -116,35 +127,96 @@ public class MasterDataLoader : MonoBehaviour {
                     string value = csvDatas[i][1];
                     ItemDic.Add(key, value);
 
-                    Debug.Log(fileName + " : " + row + " : " + col);
+                    //Debug.Log(fileName + " : " + row + " : " + col);
                     //Debug.Log("List : " + csvDatas[i][0] + " : " + csvDatas[i][1]);
                     //Debug.Log("Dic[value] : " + ItemDic[csvDatas[i][0]]);
                 }
                 Debug.Log(fileName + " : " + row + "件、読込完了！");
                 break;
 
+            //C: string,list<string>
             case "CutList":
-                //Dictionary<string, List<StringBuilder>> stringToBuilderMap = new Dictionary<string, List<StringBuilder>>();
-                //Dictionary<string, string[]> CutList = new Dictionary<string, strinList<string>>();
-                Dictionary<string, string[]> CutDic = new Dictionary<string, string[]>();
+                Dictionary<string, List<string>> CutDic = new Dictionary<string, List<string>>();
+                //Dictionary<string, string[]> CutDic = new Dictionary<string, string[]>();
+                //Dictionary<string, Transform> CutDic = new Dictionary<string, Transform>();
+                //Dictionary<string, GameObject> CutDic = new Dictionary<string, GameObject>();
+
+                //List<Transform> list = new List<Transform>();
+                //List<string> list = new List<string>();
+
+                string turnL, turnR, turnB;
+                
                 for (int i = 0; i < row; i++)
                 {
                     string key = csvDatas[i][0];
-                    //内部リストに値を代入する方法が不明
+
+                    turnL = csvDatas[i][1];
+                    turnR = csvDatas[i][2];
+                    turnB = csvDatas[i][3];
+
+                    cutDatas.Add(turnL);
+                    cutDatas.Add(turnR);
+                    cutDatas.Add(turnB);
+                    Debug.Log("L,R,B : " + key + " : " + cutDatas[0] + " : " + cutDatas[1] + " : " + cutDatas[2]);
+
+                    //cutDatasをvalueに入れる
+                    //なんとか value = なんとか;
+                    //CutDic.Add(key, value);
+
+                    
+                    //Debug.Log("" + cutDatas[0]);
+                    //Debug.Log(cutDatas[1]);
+                    //Debug.Log(cutDatas[2]);
+
+
+
+                    //Vector3 pos = transform.position;
+                    //pos.y += 2;
+                    //transform.position = pos;
+
+                    //cutTrans.position;
+
+                    //transform.position.x = posX;
+
+                    //transform.rotation = Quaternion.Euler(rotX, rotY, rotZ);
+
+
+                    //pos.x = cutDatas[i][1];
+                    //pos.y = cutDatas[i][2];
+                    //pos.z = cutDatas[i][3];
+                    //pos.x = cutDatas[i][4];
+                    //pos.y = cutDatas[i][5];
+                    //pos.z = cutDatas[i][6];
+
+                    string value = "a";
+
+
+                    //CutDic.Add(key, value);
+
+                    //ここから           //内部リストに値を代入する方法が不明
+                    //string[] value {}
                     //cutDatas[0] = "a";
                     //cutDatas[1] = "b";
                     //cutDatas[2] = "c";
                     //cutDatas[3] = "d";
                     //string value = cutDatas;
 
-                    Debug.Log(csvDatas[i][0] + " : " + csvDatas[i][1] + " : " + csvDatas[i][2] + " : " + csvDatas[i][3]);
-                    //Debug.Log(fileName + " : " + row + " : " + col);
+                    //Debug.Log(cutDatas[i][0] + " : " + cutDatas[i][1] + " : " + cutDatas[i][2]);
+                    //Debug.Log(CutDic["room_box_01"]);
+
+                    cutDatas.Clear();
                 }
                 Debug.Log(fileName + " : " + row + "件、読込完了！");
                 break;
 
-			case "CameraList":
-				break;
+            //C: string,float[]
+            case "CameraList":
+                //Dictionary<string, List<StringBuilder>> stringToBuilderMap = new Dictionary<string, List<StringBuilder>>();
+                //Dictionary<string, string[]> CutList = new Dictionary<string, strinList<string>>();
+
+
+
+                break;
 
 			default:
 				Debug.Log("Listが見つからない");
