@@ -5,9 +5,6 @@ using System.IO;
 
 public class MasterDataLoader : MonoBehaviour {
 
-    //データ一時保管用リスト（あとで下に持ってく
-    //List<string[]>	strDatas = new List<string[]>();		//Dic用一時リスト(string)
-    //List<Transform[]>	trfDatas = new List<Transform[]>();   //Dic用一時リスト(Transform)
 
     //csv読み込み用
     public List<string[]> csvDatas = new List<string[]>();
@@ -35,7 +32,6 @@ public class MasterDataLoader : MonoBehaviour {
 	}
 
     public void LoadData(string fileName) {
-        //public void LoadData(string fileName, int listType ) {
 
         //csvファイル読み込み
         TextAsset csvFile = Resources.Load("csv/" + fileName) as TextAsset;
@@ -47,7 +43,6 @@ public class MasterDataLoader : MonoBehaviour {
         //    Debug.Log(strCheck +" は、コメント行！");
         //}
 
-
 		//データのリスト化
         while(reader.Peek() > -1){
             string line = reader.ReadLine();
@@ -57,17 +52,8 @@ public class MasterDataLoader : MonoBehaviour {
         //要素数取得
         int row = csvDatas.Count;
         int col = csvDatas[0].Length;
+
 		//要素数リスト(key,row,col)に入れる
-
-        //csvデータのディクショナリ可
-		//リストごとに個別処理
-		
-        //ConvertDictionary();
-        //string dicName = fileName + "Dic"; 
-
-		//Dictionary<string, List<StringBuilder>> stringToBuilderMap = new Dictionary<string, List<StringBuilder>>();
-        //Dictionary<string, bool> dic = new Dictionary<string, bool>();
-
 
 		switch(fileName){
             //A: string,bool
@@ -83,6 +69,7 @@ public class MasterDataLoader : MonoBehaviour {
                     //Debug.Log("List : " + csvDatas[i][0] + " : " + csvDatas[i][1]);
                     //Debug.Log("Dic[value] : " + FlagDic[csvDatas[i][0]]);
                 }
+
                 Debug.Log(fileName + " : " + row + "件、読込完了！");
                 break;
 
@@ -99,6 +86,7 @@ public class MasterDataLoader : MonoBehaviour {
                     //Debug.Log("List : " + csvDatas[i][0] + " : " + csvDatas[i][1]);
                     //Debug.Log("Dic[value] : " + EventDic[csvDatas[i][0]]);
                 }
+
                 Debug.Log(fileName + " : " + row + "件、読込完了！");
                 break;
 
@@ -115,6 +103,7 @@ public class MasterDataLoader : MonoBehaviour {
                     //Debug.Log("List : " + csvDatas[i][0] + " : " + csvDatas[i][1]);
                     //Debug.Log("Dic[value] : " + GimmickDic[csvDatas[i][0]]);
                 }
+
                 Debug.Log(fileName + " : " + row + "件、読込完了！");
                 break;
 
@@ -131,18 +120,13 @@ public class MasterDataLoader : MonoBehaviour {
                     //Debug.Log("List : " + csvDatas[i][0] + " : " + csvDatas[i][1]);
                     //Debug.Log("Dic[value] : " + ItemDic[csvDatas[i][0]]);
                 }
+
                 Debug.Log(fileName + " : " + row + "件、読込完了！");
                 break;
 
             //C: string,list<string>
             case "CutList":
                 Dictionary<string, List<string>> CutDic = new Dictionary<string, List<string>>();
-                //Dictionary<string, string[]> CutDic = new Dictionary<string, string[]>();
-                //Dictionary<string, Transform> CutDic = new Dictionary<string, Transform>();
-                //Dictionary<string, GameObject> CutDic = new Dictionary<string, GameObject>();
-
-                //List<Transform> list = new List<Transform>();
-                //List<string> list = new List<string>();
 
                 string turnL, turnR, turnB;
                 
@@ -157,55 +141,17 @@ public class MasterDataLoader : MonoBehaviour {
                     cutDatas.Add(turnL);
                     cutDatas.Add(turnR);
                     cutDatas.Add(turnB);
-                    Debug.Log("L,R,B : " + key + " : " + cutDatas[0] + " : " + cutDatas[1] + " : " + cutDatas[2]);
+                    //Debug.Log(cutDatas[0]);
 
-                    //cutDatasをvalueに入れる
-                    //なんとか value = なんとか;
-                    //CutDic.Add(key, value);
+                    CutDic.Add(key, cutDatas);
+                    Debug.Log(key + " : " + CutDic[key][0] + " : " + CutDic[key][1] + " : " + CutDic[key][2]);
 
-                    
-                    //Debug.Log("" + cutDatas[0]);
-                    //Debug.Log(cutDatas[1]);
-                    //Debug.Log(cutDatas[2]);
-
-
-
-                    //Vector3 pos = transform.position;
-                    //pos.y += 2;
-                    //transform.position = pos;
-
-                    //cutTrans.position;
-
-                    //transform.position.x = posX;
-
-                    //transform.rotation = Quaternion.Euler(rotX, rotY, rotZ);
-
-
-                    //pos.x = cutDatas[i][1];
-                    //pos.y = cutDatas[i][2];
-                    //pos.z = cutDatas[i][3];
-                    //pos.x = cutDatas[i][4];
-                    //pos.y = cutDatas[i][5];
-                    //pos.z = cutDatas[i][6];
-
-                    string value = "a";
-
-
-                    //CutDic.Add(key, value);
-
-                    //ここから           //内部リストに値を代入する方法が不明
-                    //string[] value {}
-                    //cutDatas[0] = "a";
-                    //cutDatas[1] = "b";
-                    //cutDatas[2] = "c";
-                    //cutDatas[3] = "d";
-                    //string value = cutDatas;
-
-                    //Debug.Log(cutDatas[i][0] + " : " + cutDatas[i][1] + " : " + cutDatas[i][2]);
-                    //Debug.Log(CutDic["room_box_01"]);
+                    //Debug.Log("L,R,B : " + key + " : " + cutDatas[0] + " : " + cutDatas[1] + " : " + cutDatas[2]);
 
                     cutDatas.Clear();
+
                 }
+
                 Debug.Log(fileName + " : " + row + "件、読込完了！");
                 break;
 
