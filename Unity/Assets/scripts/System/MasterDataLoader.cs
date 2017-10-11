@@ -9,6 +9,7 @@ public class MasterDataLoader : MonoBehaviour {
     //csv読み込み用
     public List<string[]> csvDatas = new List<string[]>();
     public List<string> cutDatas = new List<string>();
+    public List<string> _cutDatas = new List<string>();
 
     //private List<GameObject>	myList		= new List<GameObject>();
     //GameObject newObj2 = myList[0]; //Listへのアクセス
@@ -124,34 +125,49 @@ public class MasterDataLoader : MonoBehaviour {
                 Debug.Log(fileName + " : " + row + "件、読込完了！");
                 break;
 
-            //C: string,list<string>
+            //C: string,list<string[]>
             case "CutList":
-                Dictionary<string, List<string>> CutDic = new Dictionary<string, List<string>>();
+                //Dictionary<string, List<string>> CutDic = new Dictionary<string, List<string>>();
+                Dictionary<string, string[]> CutDic = new Dictionary<string, string[]>();
 
-                string turnL, turnR, turnB;
-                
+                string[] array = new string[3];
+
+                //string turnL, turnR, turnB;
+
                 for (int i = 0; i < row; i++)
                 {
                     string key = csvDatas[i][0];
 
-                    turnL = csvDatas[i][1];
-                    turnR = csvDatas[i][2];
-                    turnB = csvDatas[i][3];
+                    array[0] = csvDatas[i][1];
+                    array[1] = csvDatas[i][2];
+                    array[2] = csvDatas[i][3];
 
-                    cutDatas.Add(turnL);
-                    cutDatas.Add(turnR);
-                    cutDatas.Add(turnB);
-                    //Debug.Log(cutDatas[0]);
+                    cutDatas.Add(array[0]);
+                    cutDatas.Add(array[1]);
+                    cutDatas.Add(array[2]);
 
-                    CutDic.Add(key, cutDatas);
+                    //turnL = csvDatas[i][1];
+                    //turnR = csvDatas[i][2];
+                    //turnB = csvDatas[i][3];
+
+                    //cutDatas.Add(turnL);
+                    //cutDatas.Add(turnR);
+                    //cutDatas.Add(turnB);
+
+                    //_cutDatas = cutDatas;
+
+                    //CutDic.Add(key, cutDatas);
                     Debug.Log(key + " : " + CutDic[key][0] + " : " + CutDic[key][1] + " : " + CutDic[key][2]);
+                    Debug.Log(_cutDatas.Count);
 
-                    //Debug.Log("L,R,B : " + key + " : " + cutDatas[0] + " : " + cutDatas[1] + " : " + cutDatas[2]);
-
+                    //専用リストなので消さない。リスト丸ごと入っているので初期化するとDic内も消える
+                    //消さないとひと繋ぎのリストになってしまう
+                    //string[]配列にする->駄目
                     cutDatas.Clear();
 
                 }
-
+                //Debug.Log(CutDic["room_box_01"][1]);
+                //Debug.Log(CutDic["room_box_01"][2]);
                 Debug.Log(fileName + " : " + row + "件、読込完了！");
                 break;
 
