@@ -5,15 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class test : MonoBehaviour {
 
-    //public MasterDataLoader MstData = new MasterDataLoader();
-
     public bool isDebug = false;
 
     void Awake() {
-        //マスターデータ読み込み
-        //MstData.LoadData("FlagList",0);
-        //MstData.CsvRead("FlagList");
-        //MstData.CsvRead("CameraSet");
     }
 
     void Start () {
