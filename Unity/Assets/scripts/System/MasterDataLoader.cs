@@ -8,15 +8,20 @@ public class MasterDataLoader : MonoBehaviour {
     //csv読み込み用
     public List<string[]> csvDatas = new List<string[]>();
 
+    //各種Dictionary
+    public static readonly Dictionary<string, string> ItemDic = new Dictionary<string, string>();
+    public static readonly Dictionary<string, string> IconDic = new Dictionary<string, string>();
+
     void Awake(){
 
 		//マスターデータ読み込み
-		LoadData("FlagList");		//フラグ		    A:string,bool
-		LoadData("EventList");		//イベント		A:string,bool
-		LoadData("GimmickList");	//ギミック		B:string,string
-		LoadData("ItemList");		//アイテム	    B:string,string
-		LoadData("CutList");		//カット	    	C:string,list[string[3]]
-		LoadData("CameraList");		//カメラリスト	D:string,list[float[6]]
+		LoadData("FlagList");		//フラグ　　　　　　A:string,bool
+		LoadData("EventList");		//イベント　　　　　A:string,bool
+		LoadData("GimmickList");	//ギミック　　　　　B:string,string
+		LoadData("ItemList");       //アイテム　　　　　B:string,string
+        LoadData("IconList");       //アイテムアイコン　B:string,string
+        LoadData("CutList");		//カット　　　　　　C:string,list[string[3]]
+		LoadData("CameraList");		//カメラリスト　　　D:string,list[float[6]]
 
 	}
 
@@ -92,17 +97,39 @@ public class MasterDataLoader : MonoBehaviour {
 
             //B: string,string
             case "ItemList":
-                Dictionary<string, string> ItemDic = new Dictionary<string, string>();
+                //Dictionary<string, string> ItemDic = new Dictionary<string, string>();
                 for (int i = 0; i < row; i++)
                 {
                     string key = csvDatas[i][0];
                     string value = csvDatas[i][1];
                     ItemDic.Add(key, value);
 
-                    //Debug.Log("Dic[value] : " + ItemDic[csvDatas[i][0]]);
                 }
 
+                //Debug.Log(ItemDic["itm_sphere_01"]);
+                //Debug.Log(ItemDic["itm_key_01"]);
+                //Debug.Log(ItemDic["itm_key_02"]);
+                //Debug.Log(ItemDic["itm_key_03"]);
                 Debug.Log("読込完了！　" + fileName + " : " + ItemDic.Count + " 件");
+                break;
+
+            //B: string,string
+            case "IconList":
+                //Dictionary<string, string> IconDic = new Dictionary<string, string>();
+                for (int i = 0; i < row; i++)
+                {
+                    string key = csvDatas[i][0];
+                    string value = csvDatas[i][1];
+                    IconDic.Add(key, value);
+
+                }
+
+                //[key]
+                //Debug.Log(IconDic["itm_sphere_01"]);
+                //Debug.Log(IconDic["itm_key_01"]);
+                //Debug.Log(IconDic["itm_key_02"]);
+                //Debug.Log(IconDic["itm_key_03"]);
+                Debug.Log("読込完了！　" + fileName + " : " + IconDic.Count + " 件");
                 break;
 
             //C: string,list<string[3]>
