@@ -42,9 +42,9 @@ public class ItemMenu : MonoBehaviour {
 
 
     void Start() {
-        Debug.Log("Item : " + MasterDataLoader.ItemDic["itm_key_01"]);
-        Debug.Log("Icon : " + MasterDataLoader.IconDic["itm_key_01"]);
-
+        Texture2D texture = Resources.Load("icon/" + "green") as Texture2D;
+        Image img = GameObject.Find("Item_0").GetComponent<Image>();
+        img.sprite = Sprite.Create(texture, new Rect(0, 0, 100, 100), Vector2.zero);
     }
 
     //インベントリ更新
@@ -55,7 +55,6 @@ public class ItemMenu : MonoBehaviour {
                 //ボタン有効化
                 iBtn[i].interactable = true;
                 //Debug.Log(ItemInventory[i] + " ok!");
-
             } else {
 
                 //ボタン無効化
@@ -85,6 +84,7 @@ public class ItemMenu : MonoBehaviour {
                 flg = true;
 
                 //アイテムアイコンを表示する
+
 
                 Debug.Log("スロット[" + i + "]に " + ItemInventory[i] + " をAddだぜ！");
             }
