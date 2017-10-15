@@ -14,6 +14,11 @@ public class ItemMenu : MonoBehaviour {
 
     public Button Wpn;
 
+    string objName;
+    string imgName;
+    string iconName;
+
+
     //アイテム欄生成
     void Awake()
     {
@@ -29,13 +34,14 @@ public class ItemMenu : MonoBehaviour {
         //インベントリ初期化
         for (int i = 0; i < maxItmCnt; i++) {
             //ボタン情報取得
-            string objName = "Item_" + i.ToString();
-            string imgName = "Icon_" + i.ToString();
+            objName = "Item_" + i.ToString();
+            imgName = "Icon_" + i.ToString();
             iBtn[i] = GameObject.Find(objName).GetComponent<Button>();
             iImg[i] = GameObject.Find(objName + "/" + imgName).GetComponent<Image>();
             //Debug.Log(iImg[i].name);
-            Texture2D tex = Resources.Load("icon/green") as Texture2D;
-            iImg[i].sprite = Sprite.Create(tex, new Rect(0, 0, 80, 80), Vector2.zero);
+
+            //Texture2D tex = Resources.Load("icon/green") as Texture2D;
+            //iImg[i].sprite = Sprite.Create(tex, new Rect(0, 0, 80, 80), Vector2.zero);
 
             //初期化
             iBtn[i].interactable = false;
@@ -47,9 +53,14 @@ public class ItemMenu : MonoBehaviour {
         }
 
         //空アイテム追加テスト　ところどころ埋まってる感
+        ItemInventory[0] = "item_0";
         ItemInventory[1] = "item_1";
         ItemInventory[3] = "item_3";
         ItemInventory[4] = "item_4";
+        iBtn[0].interactable = true;
+        iBtn[1].interactable = true;
+        iBtn[3].interactable = true;
+        iBtn[4].interactable = true;
 
         //Debug.Log("Item : " + MasterDataLoader.ItemDic["itm_key_01"]);
         //Debug.Log("Icon : " + MasterDataLoader.IconDic["itm_key_01"]);
@@ -93,18 +104,23 @@ public class ItemMenu : MonoBehaviour {
 
         //アイテムDBからフラグを引っ張ってくる
         //Debug.Log(ItemDic["itm_key_01"]);
-        Debug.Log("Item : " + MasterDataLoader.ItemDic["itm_key_01"]);
-        Debug.Log("Icon : " + MasterDataLoader.IconDic["itm_key_01"]);
+        //Debug.Log("Item : " + MasterDataLoader.ItemDic["itm_key_01"]);
+        //Debug.Log("Icon : " + MasterDataLoader.IconDic["itm_key_01"]);
 
         //空いてるスロットを探す
         for (int i = 0; i < maxItmCnt; i++) {
             if (ItemInventory[i] == "none" && isAdd == false)
             {
-                //ItemInventory[i] = iName;
+                ItemInventory[i] = iName;
 
                 iBtn[i].interactable = true;
 
                 //アイテムアイコン表示
+                Debug.Log(objName);
+                Debug.Log(iName);
+                string iconName = MasterDataLoader.IconDic[iName];
+                Texture2D texture = Resources.Load("icon/" + iconName) as Texture2D;
+                iImg[i].sprite = Sprite.Create(texture, new Rect(0, 0, 80, 80), Vector2.zero);
 
                 isAdd = true;
 

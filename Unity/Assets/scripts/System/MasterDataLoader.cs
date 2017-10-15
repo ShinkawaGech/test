@@ -140,13 +140,14 @@ public class MasterDataLoader : MonoBehaviour {
                 {
                     //毎回newする事で別のリストになる
                     List<string[]> cutDatas = new List<string[]>();
-                    string[] cutArray = new string[3];
+                    string[] cutArray = new string[4];
 
                     string key = csvDatas[i][0];
 
                     cutArray[0] = csvDatas[i][1];
                     cutArray[1] = csvDatas[i][2];
                     cutArray[2] = csvDatas[i][3];
+                    cutArray[3] = csvDatas[i][4];
                     cutDatas.Add(cutArray);
 
                     CutDic.Add(key, cutDatas);
@@ -155,7 +156,7 @@ public class MasterDataLoader : MonoBehaviour {
                     //cutDatas.Clear();
                 }
 
-                //[key][0固定][0:L,1:R,2:B]
+                //[key][0固定][0:L,1:R,2:Up,3:Back]
                 //Debug.Log(CutDic["room_front"][0][0]);
                 Debug.Log("読込完了！　" + fileName + " : " + CutDic.Count + " 件");
                 break;
