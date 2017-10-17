@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//全てのアイテムにアタッチする。
+//全てのアイテムにアタッチする。ItemMenuへの繋ぎ。
+//共通処理のみ
 public class ItemCtrl : MonoBehaviour {
 
     //ItemMenuコンポーネント
@@ -11,19 +12,21 @@ public class ItemCtrl : MonoBehaviour {
     //アイテム名＝オブジェクト名
     string ItemName;
 
-	void Start () {
+//    void Awake () {
+//    }
+
+    void Start () {
         iMenu = GameObject.Find("ItemMenu").GetComponent<ItemMenu>();
         ItemName = this.gameObject.name;
         //Debug.Log(ItemName);
+
     }
 	
-	void Update () {
-        //Debug.Log(flg_item);
-	}
+//	void Update () {
+//        //Debug.Log(flg_item);
+//	}
 
     public void GetItem() {
-        //Debug.Log("getだぜ！！");
-
         //クリックしたアイテムを取得状態（非表示）にする。
         this.gameObject.SetActive(false);
 

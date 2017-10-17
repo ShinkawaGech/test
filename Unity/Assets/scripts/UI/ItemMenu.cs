@@ -6,6 +6,7 @@ using UnityEngine.UI;
 //アイテム欄に表示したり並べ替えたりする
 public class ItemMenu : MonoBehaviour {
 
+    //アイテム欄
     int maxItmCnt = 5;
 
     public string[] ItemInventory;  //カレントアイテムのオブジェクト名
@@ -18,14 +19,19 @@ public class ItemMenu : MonoBehaviour {
     string imgName;
     string iconName;
 
+    //アイテム詳細
+    GameObject iDetail;
 
-    //アイテム欄生成
-    void Awake()
-    {
+
+    void Awake (){
+        //アイテム詳細
+        iDetail = GameObject.Find("ItemDetail").gameObject;
+        iDetail.SetActive(false);
+
     }
 
     void Start() {
-
+        //AwakeでマスターデータをロードしているのでStartでやる
         //インベントリ、ボタン、アイコン数の定義
         ItemInventory = new string[maxItmCnt];
         iBtn = new Button[maxItmCnt];
@@ -102,29 +108,26 @@ public class ItemMenu : MonoBehaviour {
         //追加処理中フラグ
         bool isAdd = false;
 
-        //アイテムDBからフラグを引っ張ってくる
-        //Debug.Log(ItemDic["itm_key_01"]);
-        //Debug.Log("Item : " + MasterDataLoader.ItemDic["itm_key_01"]);
-        //Debug.Log("Icon : " + MasterDataLoader.IconDic["itm_key_01"]);
-
         //空いてるスロットを探す
         for (int i = 0; i < maxItmCnt; i++) {
             if (ItemInventory[i] == "none" && isAdd == false)
             {
+                //アイテム名（オブジェクト名）をインベントリに
                 ItemInventory[i] = iName;
 
+                //ボタン表示
                 iBtn[i].interactable = true;
 
                 //アイテムアイコン表示
-                Debug.Log(objName);
-                Debug.Log(iName);
                 string iconName = MasterDataLoader.IconDic[iName];
                 Texture2D texture = Resources.Load("icon/" + iconName) as Texture2D;
                 iImg[i].sprite = Sprite.Create(texture, new Rect(0, 0, 80, 80), Vector2.zero);
 
+                //追加処理完了
                 isAdd = true;
 
-
+                Debug.Log(objName);
+                Debug.Log(iName);
                 Debug.Log("スロット[" + i + "]に " + ItemInventory[i] + " をAddだぜ！");
             }
 
@@ -141,5 +144,33 @@ public class ItemMenu : MonoBehaviour {
     {
         Debug.Log("アイテム削除だぜ！");
     }
+
+
+    
+    //アイテム詳細
+    public void ItemDetailEnable()
+    {
+        //iDtail = GameObject.Find("ItemDetail").GetComponent<>
+        Debug.Log("アイテム詳細：表示");
+        iDetail.SetActive(true);
+
+        //アイテムモデル表示
+        //アイテム名＋"_Detail"
+    }
+
+    public void ItemDetailDisable()
+    {
+        //iDtail = GameObject.Find("ItemDetail").GetComponent<>
+        iDetail.SetActive(false);
+        Debug.Log("アイテム詳細：非表示");
+    }
+
+    //アイテム詳細画面で何かした
+    public void UseItem()
+    {
+    }
+
+
+
 
 }

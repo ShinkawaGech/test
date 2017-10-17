@@ -2,32 +2,44 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//アイテム欄を選択して詳細を見たりする
+//全てのアイテムボタンにアタッチする。ItemMenuへの繋ぎ。
+//共通処理のみ
 public class ItemButton : MonoBehaviour {
 
-    public string itemNo;
-    //ItemButton btn;
+    //アイテムメニュー
+    ItemMenu iMenu;
 
-    void Start () {
-        //ボタンオブジェクト取得
-        //string btnName = "Item_" + itemNo;
-        //btn = GameObject.Find(btnName).GetComponent<ItemButton>();
-        //Debug.Log(btn);
+    void Awake () {
+        iMenu = GameObject.Find("ItemMenu").GetComponent<ItemMenu>();
     }
-	
-	void Update () {
-		
-	}
+
+    //	void Update () {
+        //StartCoroutine("OpenItemDetail");
+    //	}
 
     //アイテムボタンを押した
-    void PushItemButton() {
-        StartCoroutine("OpenItemDetail");
+    public void PushItemButton() {
+        iMenu.ItemDetailEnable();
     }
 
-    IEnumerator OpenItemDetail() {
-
-        //パネルをenable
-        //ItemData[itemNo]
-        yield return new WaitForSeconds(0);
+    //アイテム詳細閉じるボタンを押した
+    public void PushItemDetailClose()
+    {
+        iMenu.ItemDetailDisable();
     }
+
+    //他のアイテムボタンを押した
+    public void ChangeItemDetailClose()
+    {
+        iMenu.ItemDetailDisable();
+        iMenu.ItemDetailEnable();
+    }
+
+    //    IEnumerator OpenItemDetail() {
+    //
+    //        //パネルをenable
+    //        //ItemData[itemNo]
+    //        yield return new WaitForSeconds(0);
+    //    }
+
 }
