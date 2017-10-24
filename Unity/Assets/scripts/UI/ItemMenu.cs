@@ -73,14 +73,11 @@ public class ItemMenu : MonoBehaviour {
 
     }
 
-
-    //インベントリ更新
-    //アイテムフラグが更新されるとアイテム欄に反映する
     void Update() {
 
-        //AddInventoryに移行できるかも
-        for (int i = 0; i < maxItmCnt; i++) {
-            if (ItemInventory[i] != "none") {
+        //AddInventoryに移行
+        //for (int i = 0; i < maxItmCnt; i++) {
+            //if (ItemInventory[i] != "none") {
 
                 //ボタン有効化
                 //iBtn[i].interactable = true;
@@ -88,8 +85,8 @@ public class ItemMenu : MonoBehaviour {
 
                 //アイテムアイコンを表示する
                 
-            }
-            else {
+            //}
+            //else {
 
                 //アイテムアイコンを非表示にする
 
@@ -97,8 +94,8 @@ public class ItemMenu : MonoBehaviour {
                 //iBtn[i].interactable = false;
                 //Debug.Log("Item_" + ItemInventory[i]);
 
-            }
-        }
+            //}
+        //}
 
     }
 
