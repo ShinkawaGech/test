@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class test : MonoBehaviour {
 
     //システムフラグ
+    public bool isTest = false;                 //テストモード
     public static bool isDebug = false;         //デバッグモード
     public static bool isFirstPlay = false;     //初回プレイ
     public static bool isGameClear = false;     //ゲームクリア

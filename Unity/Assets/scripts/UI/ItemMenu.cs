@@ -14,7 +14,6 @@ public class ItemMenu : MonoBehaviour {
     public Image[] iImg;
 
     public Button Wpn;
-
     string objName;
     string imgName;
     string iconName;

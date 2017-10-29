@@ -1,6 +1,6 @@
 room_front,room_left,room_right,none,none
-room_right,room_front,room_back,none,none
-room_left,room_back,room_front,none,none
+room_right,room_front,room_back,room_up,none
+room_left,room_back,room_front,none,room_back
 room_back,room_right,room_left,none,none
 room_box_01,none,none,none,room_right
 room_box_02,none,none,none,room_left

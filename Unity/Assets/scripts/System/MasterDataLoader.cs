@@ -9,8 +9,14 @@ public class MasterDataLoader : MonoBehaviour {
     public List<string[]> csvDatas = new List<string[]>();
 
     //各種Dictionary
+    public static readonly Dictionary<string, bool> FlagDic = new Dictionary<string, bool>();
+    public static readonly Dictionary<string, bool> EveDic = new Dictionary<string, bool>();
+    public static readonly Dictionary<string, string> GimDic = new Dictionary<string, string>();
     public static readonly Dictionary<string, string> ItemDic = new Dictionary<string, string>();
     public static readonly Dictionary<string, string> IconDic = new Dictionary<string, string>();
+    public static readonly Dictionary<string, List<string[]>> CutDic = new Dictionary<string, List<string[]>>();
+    public static readonly Dictionary<string, List<float[]>> CamDic = new Dictionary<string, List<float[]>>();
+
 
     void Awake(){
 
@@ -52,7 +58,7 @@ public class MasterDataLoader : MonoBehaviour {
 		switch(fileName){
             //A: string,bool
  			case "FlagList":
-                Dictionary<string, bool> FlagDic = new Dictionary<string, bool>();
+                //Dictionary<string, bool> FlagDic = new Dictionary<string, bool>();
                 for (int i = 0; i < row; i++)
                 {
                     string key = csvDatas[i][0];
@@ -67,7 +73,7 @@ public class MasterDataLoader : MonoBehaviour {
 
             //A: string,bool
             case "EventList":
-		        Dictionary<string, bool> EveDic = new Dictionary<string, bool>();
+		        //Dictionary<string, bool> EveDic = new Dictionary<string, bool>();
         		for (int i = 0; i < row; i++)
                 {
             		string key = csvDatas[i][0];
@@ -82,7 +88,7 @@ public class MasterDataLoader : MonoBehaviour {
 
             //B: string,string
             case "GimmickList":
-                Dictionary<string, string> GimDic = new Dictionary<string, string>();
+                //Dictionary<string, string> GimDic = new Dictionary<string, string>();
                 for (int i = 0; i < row; i++)
                 {
                     string key = csvDatas[i][0];
@@ -134,7 +140,7 @@ public class MasterDataLoader : MonoBehaviour {
 
             //C: string,list<string[3]>
             case "CutList":
-                Dictionary<string, List<string[]>> CutDic = new Dictionary<string, List<string[]>>();
+                //Dictionary<string, List<string[]>> CutDic = new Dictionary<string, List<string[]>>();
 
                 for (int i = 0; i < row; i++)
                 {
@@ -163,7 +169,7 @@ public class MasterDataLoader : MonoBehaviour {
 
             //C: string,list<float[6]>
             case "CameraList":
-                Dictionary<string, List<float[]>> CamDic = new Dictionary<string, List<float[]>>();
+                //Dictionary<string, List<float[]>> CamDic = new Dictionary<string, List<float[]>>();
 
                 for (int i = 0; i < row; i++)
                 {
